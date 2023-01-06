@@ -54,6 +54,12 @@ public class App
         trainer.setName("Balancha");
         create(trainer);
 
+        User user = new User();
+        user.setName("Izat");
+        user.setLastName("Kydyrmyshev");
+        user.setAge(35);
+        create(user);
+
     }
 
     public static Long create (Company c){
@@ -135,5 +141,14 @@ public class App
         session.getTransaction().commit();
         session.close();
         return t1.getId();
+    }
+
+    public static Long create(User u){
+        Session session = Util.getSession().openSession();
+        session.beginTransaction();
+        session.save(u);
+        session.getTransaction().commit();
+        session.close();
+        return u.getId();
     }
 }
